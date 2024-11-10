@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const login = require("../controllers/login");
-const register = require("../controllers/register");
+const createUser = require("../controllers/createUser");
 
 const router = express.Router();
 
@@ -21,7 +21,16 @@ router.get("/post", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../pages/post.html"));
 });
 
-router.get("/login", login);
-router.get("/register", register);
+router.get("/login", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../pages/login.html"));
+});
+
+router.get("/register", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../pages/registration.html"));
+});
+
+router.post("/login", login);
+
+router.post("/register", createUser);
 
 module.exports = router;

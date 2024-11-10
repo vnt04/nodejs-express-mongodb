@@ -86,7 +86,7 @@
               <h1>Create an account</h1>
               <span class="subheading"
                 >Have account?<a
-                  href="/register"
+                  href="/login"
                   style="text-decoration: underline; color: white"
                 >
                   Login.</a
@@ -109,7 +109,12 @@
                       Sign up
                     </p>
 
-                    <form class="mx-1 mx-md-4">
+                    <form
+                      action="/register"
+                      method="pOst"
+                      onsubmit="return checkTypePassword()"
+                      class="mx-1 mx-md-4"
+                    >
                       <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div
@@ -118,6 +123,7 @@
                         >
                           <input
                             type="text"
+                            name="name"
                             id="form3Example1c"
                             class="form-control"
                           />
@@ -135,6 +141,7 @@
                         >
                           <input
                             type="email"
+                            name="email"
                             id="form3Example3c"
                             class="form-control"
                           />
@@ -152,6 +159,7 @@
                         >
                           <input
                             type="password"
+                            name="password"
                             id="form3Example4c"
                             class="form-control"
                           />
@@ -197,7 +205,7 @@
                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                       >
                         <button
-                          type="button"
+                          type="submit"
                           data-mdb-button-init
                           data-mdb-ripple-init
                           class="btn btn-primary btn-lg"
@@ -206,6 +214,19 @@
                         </button>
                       </div>
                     </form>
+                    <script>
+                      function checkTypePassword() {
+                        const password =
+                          document.getElementById("form3Example4c").value;
+                        const confirmPassword =
+                          document.getElementById("form3Example4cd").value;
+                        if (password !== confirmPassword) {
+                          alert("Mật khẩu không trùng khớp.");
+                          return false;
+                        }
+                        return true;
+                      }
+                    </script>
                   </div>
                   <div
                     class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
